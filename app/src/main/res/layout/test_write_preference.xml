@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/mode_private"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="private"/>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/mode_world_readable"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="world readable"/>
+
+    <Button
+        android:id="@+id/mode_world_writable"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="world writable"/>
+
+    <Button
+        android:id="@+id/go_to_read"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="go to read "/>
+
+</LinearLayout>
