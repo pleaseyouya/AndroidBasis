@@ -46,6 +46,9 @@ public class MainActivity extends ActionBarActivity {
 
         listView.setAdapter(new Adapter());
 
+        //去掉滑动到底部时或者顶部时产生的阴影divider
+        listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
     }
 
 
