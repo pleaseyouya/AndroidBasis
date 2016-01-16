@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by wangjinfa on 2016/1/14.
@@ -18,6 +19,8 @@ public class TestWritePreference extends Activity {
 
     private Button toRead;
 
+    private TextView display;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +31,12 @@ public class TestWritePreference extends Activity {
         writable = (Button) findViewById(R.id.mode_world_writable);
         toRead = (Button) findViewById(R.id.go_to_read);
 
+        display = (TextView) findViewById(R.id.display);
+
         privateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSharedPreferences("pref", Context.MODE_WORLD_READABLE).edit().putString("key",
+                getSharedPreferences("pref", Context.MODE_PRIVATE).edit().putString("key",
                         "private").commit();
             }
         });
@@ -49,7 +54,7 @@ public class TestWritePreference extends Activity {
         writable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSharedPreferences("pref", Context.MODE_WORLD_READABLE).edit().putString("key",
+                getSharedPreferences("pref", Context.MODE_WORLD_WRITEABLE).edit().putString("key",
                         "world writable").commit();
             }
         });
@@ -59,9 +64,22 @@ public class TestWritePreference extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(TestWritePreference.this, TestReadPreference.class);
                 startActivity(intent);
-//                String s = getSharedPreferences("pref", MODE_WORLD_READABLE).getString("key", "default");
+//                String s = getSharedPreferences("pref", MODE_MULTI_PROCESS).getString("key", "default");
 //                toRead.setText(s);
             }
+
+
         });
+        Intent intent = new Intent(TestWritePreference.this, TestReadPreference.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String s = getSharedPreferences("pref", MODE_PRIVATE).getString("key",
+                "default");
+        display.setText(s);
     }
 }

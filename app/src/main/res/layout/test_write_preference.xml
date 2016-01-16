@@ -32,4 +32,12 @@
         android:layout_height="50dp"
         android:text="go to read "/>
 
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="d"
+        android:gravity="center"
+        android:layout_marginTop="50dp"/>
+
 </LinearLayout>
