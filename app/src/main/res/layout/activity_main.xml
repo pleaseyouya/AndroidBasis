@@ -14,6 +14,8 @@
         android:layout_height="fill_parent"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
+        android:descendantFocusability="blocksDescendants"
+        android:focusableInTouchMode="true"
         ></ListView>
 
 </RelativeLayout>

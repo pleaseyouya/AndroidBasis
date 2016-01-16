@@ -1,12 +1,15 @@
 package com.pleaseyouya.androidbasis;
 
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,15 +51,42 @@ public class MainActivity extends ActionBarActivity {
 
         //去掉滑动到底部时或者顶部时产生的阴影divider
         listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-//        listView.smoothScrollToPosition(11);
-//        listView.setSelection(listView.getCount()-1);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("item", "clicked");
+            }
+        });
+
+        // 设置divider
+        listView.setDivider(new ColorDrawable(0xffff00ff));
+        listView.setDividerHeight(2);
+
+        //滑动到底部
         listView.post(new Runnable() {
             @Override
             public void run() {
                 listView.smoothScrollToPosition(listView.getCount()-1);
             }
         });
+
+        // 向下滑动1个item
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                listView.smoothScrollByOffset(1);
+            }
+        });
+
+        // 向上滑动1个item
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                listView.smoothScrollByOffset(-1);
+            }
+        });
+
 
     }
 
