@@ -41,13 +41,22 @@ public class MainActivity extends ActionBarActivity {
 
         listView = (ListView)findViewById(R.id.list);
 
-        listView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
-        listView.addFooterView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
+//        listView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
+//        listView.addFooterView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
 
         listView.setAdapter(new Adapter());
 
         //去掉滑动到底部时或者顶部时产生的阴影divider
         listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+//        listView.smoothScrollToPosition(11);
+//        listView.setSelection(listView.getCount()-1);
+
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                listView.smoothScrollToPosition(listView.getCount()-1);
+            }
+        });
 
     }
 
