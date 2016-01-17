@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,41 +57,47 @@ public class MainActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("item", "clicked");
+                Log.d("wjf", "on item clicked");
             }
         });
+
 
         // 设置divider
-        listView.setDivider(new ColorDrawable(0xffff00ff));
-        listView.setDividerHeight(2);
+//        listView.setDivider(new ColorDrawable(0xffff00ff));
+//        listView.setDividerHeight(2);
 
         //滑动到底部
-        listView.post(new Runnable() {
-            @Override
-            public void run() {
-                listView.smoothScrollToPosition(listView.getCount()-1);
-            }
-        });
+//        listView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listView.smoothScrollToPosition(listView.getCount()-1);
+//            }
+//        });
 
         // 向下滑动1个item
-        listView.post(new Runnable() {
-            @Override
-            public void run() {
-                listView.smoothScrollByOffset(1);
-            }
-        });
+//        listView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listView.smoothScrollByOffset(1);
+//            }
+//        });
 
         // 向上滑动1个item
-        listView.post(new Runnable() {
-            @Override
-            public void run() {
-                listView.smoothScrollByOffset(-1);
-            }
-        });
-
+//        listView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listView.smoothScrollByOffset(-1);
+//            }
+//        });
 
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.d("wjf", "activity on touch  result:" + super.onTouchEvent(event));
+        return super.onTouchEvent(event);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,9 +139,42 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = LayoutInflater.from(MainActivity.this).inflate(R.layout.list_item, null);
+            convertView = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_view, null);
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d("wjf", "item view click");
+//                }
+//            });
             TextView textView = (TextView)convertView.findViewById(R.id.text);
             textView.setText(data.get(position));
+//            textView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d("wjf", "textview click");
+//                }
+//            });
+//            textView.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    Log.d("wjf", "textview ontouch");
+//                    return false;
+//                }
+//            });
+//            Button button = (Button)convertView.findViewById(R.id.btn);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d("wjf", "btn click");
+//                }
+//            });
+//            button.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    Log.d("wjf", "button on touch");
+//                    return false;
+//                }
+//            });
             return convertView;
         }
     }
