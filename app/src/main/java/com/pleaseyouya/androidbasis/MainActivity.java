@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ListView listView;
+    private CustomListView listView;
 
     private List<String> data = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
         data.add("data11");
         data.add("data12");
 
-        listView = (ListView)findViewById(R.id.list);
+        listView = (CustomListView)findViewById(R.id.list);
 
         listView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
 //        listView.addFooterView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
@@ -162,27 +162,27 @@ public class MainActivity extends ActionBarActivity {
 //                    Log.d("wjf", "textview click");
 //                }
 //            });
-//            textView.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    Log.d("wjf", "textview ontouch");
-//                    return false;
-//                }
-//            });
-//            Button button = (Button)convertView.findViewById(R.id.btn);
+            textView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    Log.d("wjf", "textview ontouch");
+                    return false;
+                }
+            });
+            CustomButton button = (CustomButton)convertView.findViewById(R.id.btn);
 //            button.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
 //                    Log.d("wjf", "btn click");
 //                }
 //            });
-//            button.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    Log.d("wjf", "button on touch");
-//                    return false;
-//                }
-//            });
+            button.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    Log.d("wjf", "button on touch");
+                    return false;
+                }
+            });
             return convertView;
         }
     }

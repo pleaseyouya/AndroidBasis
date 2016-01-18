@@ -40,8 +40,8 @@ public class ItemView extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d("wjf", "item view on touch   result:" + super.onTouchEvent(event));
-        return super.onTouchEvent(event);
+        Log.d("wjf", "item view on touch   result:" + true);
+        return true;
     }
 
 }
