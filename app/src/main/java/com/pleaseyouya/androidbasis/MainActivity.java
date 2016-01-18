@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
         listView = (ListView)findViewById(R.id.list);
 
-//        listView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
+        listView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
 //        listView.addFooterView(LayoutInflater.from(this).inflate(R.layout.list_item, null));
 
         listView.setAdapter(new Adapter());
@@ -58,6 +58,14 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("wjf", "on item clicked");
+            }
+        });
+
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("wjf", "listview on touch");
+                return false;
             }
         });
 
